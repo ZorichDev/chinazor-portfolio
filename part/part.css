@@ -47,6 +47,11 @@ nav ul li a {
     position: relative;
 }
 
+nav ul.show {
+    display: block;
+}
+
+
 nav ul li a::after{
     content: '';
     width: 0%;
@@ -292,6 +297,15 @@ nav ul li a:hover::after{
 
 /* ------------------------contact............. */
 
+.work .layer {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .work:hover .layer {
+    opacity: 1;
+  }
+
 .contact-left {
     flex-basis: 35%;
 }
@@ -370,31 +384,49 @@ form .btn2{
 }
 
 /* ---------------css for small screens------------- */
-nav .fa-solid{
+nav .fa-solid {
     display: none;
 }
-@media only screen and (max-width: 600px){
-    #header{
+
+@media only screen and (max-width: 600px) {
+    #header {
         background-image: url(./images/fran4.png);
     }
-    .header-text{
+    
+    .header-text {
         margin-top: 100%;
         font-size: 16px;
     }
+
     .header-text h1 {
         font-size: 30px;
     }
-    nav .fa-solid{
+
+    nav .fa-solid {
         display: block;
     }
+
     nav ul {
         background: #ff004f;
-        padding: fixed;
+        padding: 0; 
         top: 0;
-        right: 0;
+        right: -200px;
         width: 200px;
         height: 100vh;
         padding-top: 50px;
-        
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0; /* Adjust margin as needed */
+    }
+
+    nav ul .fa-solid {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
     }
 }
+
+
