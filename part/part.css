@@ -408,7 +408,7 @@ nav .fa-solid {
 
     nav ul {
         background: #ff004f;
-        padding: 0; /* Fix: Change fixed to 0 */
+        padding: 0; 
         top: 0;
         right: -200px;
         width: 200px;
