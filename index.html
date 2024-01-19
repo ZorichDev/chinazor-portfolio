@@ -14,11 +14,11 @@
             <nav>
                 <img src="./20231015_083954_0000.png" alt="logo" class="logo">
                 <ul id="myNav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
                 <i class="fa-solid fa-xmark closeIcon" id="closeIcon"></i>
                 <i class="fa-solid fa-bars menuIcon" id="menuIcon"></i>
@@ -123,7 +123,7 @@
     <div class="contaier">
        <h1 class="sub-title" id="web"> My Work</h1>
         <div class="work-list">
-            <div class="work">
+            <div class="work">qw122
                 <img src="./part/images/one-page-multi-page-web-design-header.png" class="webpix" >
                 <div class="layer">
                     <h3>Web design</h3>
@@ -176,12 +176,13 @@
             </div>
 
             <div class="contact-right">
-                <form>
-                    <input type="text" name="name" placeholder="Your name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                     <button type="submit" class="btn btn2">submit</button>
                 </form>
+                <span id="msg"></span>
             </div>
         </div>
     </div>
@@ -222,6 +223,25 @@
         });
     });
 </script>
+
+<script>
+    const scriptURL = '<https://script.google.com/macros/s/AKfycbwCCuHTYDl_o11lShTXWRlJR5qP1j1YsZIe_0U19nU8twMlYBoYBybZzq3R5ZCeQcNI-w/exec>'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = Document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML =  "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },500)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 
 </body>
